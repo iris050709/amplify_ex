@@ -4,7 +4,7 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch(" http://3.135.213.9/users")
+    fetch("http://3.135.213.9/users")
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.error("Error al obtener usuarios:", error));
