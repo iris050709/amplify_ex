@@ -4,9 +4,12 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("3.135.213.9/users")
+    fetch("http://3.135.213.9/users")
       .then((response) => response.json())
-      .then((data) => setUsers(data))
+      .then((data) => {
+        console.log("Datos recibidos:", data); // Debug para ver la respuesta
+        setUsers(data);
+      })
       .catch((error) => console.error("Error al obtener usuarios:", error));
   }, []);
 
@@ -16,7 +19,7 @@ function App() {
       <ul>
         {users.map((user, index) => (
           <li key={index}>
-            {user.nombre} - {user.email}
+            {user.nombre} - {user.email} - {user.last_name}
           </li>
         ))}
       </ul>
