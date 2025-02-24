@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch("http://3.135.213.9/users")
+    fetch("https://3.135.213.9/users")
       .then((response) => response.json())
       .then((data) => {
         console.log("Datos recibidos:", data); // Debug para ver la respuesta
