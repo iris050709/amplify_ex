@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -19,43 +20,33 @@ function App() {
   );
 
   return (
-    <div className="flex flex-col items-center p-8 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold text-blue-600 mb-6">Lista de Usuarios</h1>
+    <div className="container">
+      <h1 className="title">Lista de Usuarios</h1>
       <input
         type="text"
         placeholder="Buscar por nombre"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        className="p-2 border border-gray-300 rounded-lg mb-4 w-1/2 text-center shadow-md"
+        className="search-input"
       />
-      <div className="w-full max-w-4xl">
-        <table className="w-full bg-white shadow-md rounded-lg overflow-hidden">
-          <thead className="bg-blue-500 text-white">
-            <tr>
-              <th className="p-3 text-left">Nombre</th>
-              <th className="p-3 text-left">Apellido</th>
-              <th className="p-3 text-left">Email</th>
+      <table className="user-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredUsers.map((user, index) => (
+            <tr key={index}>
+              <td>{user.nombre}</td>
+              <td>{user.last_name}</td>
+              <td>{user.email}</td>
             </tr>
-          </thead>
-          <tbody>
-            {filteredUsers.length > 0 ? (
-              filteredUsers.map((user, index) => (
-                <tr key={index} className="border-b hover:bg-gray-100">
-                  <td className="p-3">{user.nombre}</td>
-                  <td className="p-3">{user.last_name}</td>
-                  <td className="p-3">{user.email}</td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="3" className="text-center p-3 text-gray-500">
-                  No se encontraron usuarios
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
