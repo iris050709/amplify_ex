@@ -6,7 +6,7 @@ function App() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("https://18.219.121.253/users")
+    fetch("https://3.133.138.221/users")
       .then((response) => response.json())
       .then((data) => {
         console.log("Datos recibidos:", data);
